@@ -36,12 +36,20 @@ class Server(DhcpServer):
                     print option+':', ''.join([chr(i) for i in opdata if i != 0])
         print
 
+    def SaveHost(self, packet):
+	opdata = packet.options_data.get('host_name')
+	hostn = ''.join([chr(i) for i in opdata if i != 0])
+	print hostn
+
+
     def HandleDhcpDiscover(self, packet):
         print "DHCP DISCOVER"
         self.PrintOptions(packet)
+	self.SaveHost(packet)
     def HandleDhcpRequest(self, packet):
         print "DHCP REQUEST"
         self.PrintOptions(packet)
+        self.SaveHost(packet)
 
     ##  def HandleDhcpDecline(self, packet):
     ##      self.PrintOptions(packet)
