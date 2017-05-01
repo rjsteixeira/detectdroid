@@ -4,7 +4,7 @@
 import os
 import datetime
 
-filename = "/home/ctrler/detectdroid/machines.config"
+filename = "/home/ctrler/bin/detectdroid/machines.config"
 
 
 with open(filename) as f_in:
